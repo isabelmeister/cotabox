@@ -15,11 +15,6 @@ const getByFullName = async (firstName, lastName) => {
   return getFirstName;
 };
 
-/* const getAllParticipations = async (participation) => {
-  const participations = await connection().then((db) => db.collection('users').find({ participation }));
-  return participations;
-} */
-
 module.exports = {
   create,
   getAll,

@@ -20,21 +20,10 @@ userRouter.post('/', async (req,res) => {
 userRouter.get('/', async (req, res) => {
   try {
     const getAll = await userService.getAllUsers();
-    /* console.log(getAll); */
     res.status(200).json(getAll);
   } catch (error) {
     res.status(400).json({ message: 'Server error'}); 
   }
 });
-
-/* userRouter.get('/', async (req, res) => {
-  try {
-    const allParticipation = await userService.getAllParticipations()
-    console.log(allParticipation)
-    res.status(200).json(allParticipation);
-  } catch (error) {
-    res.status(400).json({ message: 'Server error'});
-  }
-}); */
 
 module.exports = userRouter;
