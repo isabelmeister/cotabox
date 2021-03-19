@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-const MONGODB_URL = 'mongodb://localhost:27017/Data'
+const MONGODB_URL = 'mongodb://localhost:27017/Data';
 /* const MONGODB_URL = 'mongodb://mongodb:27017/Data'; */
 
 const DB_NAME = 'Data';

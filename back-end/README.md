@@ -4,6 +4,7 @@
 - npm init -y
 - npm i express
 - npm i mongodb
+- npm i nodemon -D
 
 ## DataBase informations:
 - Database Used: MongoDB
