@@ -5,6 +5,7 @@
 - npm i express
 - npm i mongodb
 - npm i nodemon -D
+- npm install cors
 
 ## DataBase informations:
 - Database Used: MongoDB
