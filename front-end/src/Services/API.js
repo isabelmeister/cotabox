@@ -9,3 +9,8 @@ const create = async ({ firstName, lastName, participation }) => axios
 const getAll = async () => axios
   .get(`${URL_BASE}`)
   .then((response) => response.data);
+
+module.exports = {
+  create,
+  getAll,
+};
