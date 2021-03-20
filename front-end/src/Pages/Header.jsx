@@ -13,6 +13,7 @@ function Header() {
   const handleClick = () => {
     // create a paste and a new file called API for requirements
     // make here the connection with the create API from back-end
+    // on clicking the button you have to create a new user on DB.
   };
 
   return (
