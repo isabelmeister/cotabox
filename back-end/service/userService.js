@@ -2,15 +2,6 @@ const userModel = require('../model/userModel');
 /* const createValidation = require('../validations/createValidation'); */
 
 const createUser = async (firstName, lastName, participation) => {
-  //verify maximus participation value
-  const getParticipations = await userModel.getAll();
-  const reducer = (acc, curr) => acc + curr;
-  const participations = await getParticipations
-    .map((item) => item.participation).reduce(reducer);
-
-  if (participations + participation > 100) {
-    return { isError: true , status: 400, message: 'participation must be a minor value' };
-  }
   // first name validation
   if (!firstName) {
     return { isError: true , status: 400, message: 'firstName is required' };  
@@ -46,7 +37,18 @@ const createUser = async (firstName, lastName, participation) => {
   if (participation > 100) {
     return { isError: true , status: 400, message: 'participation must be less than 100' };
   }
-  
+  //verify maximus participation value
+  const getParticipations = await userModel.getAll();
+  if (getParticipations.length > 0) {
+    const reducer = (acc, curr) => acc + curr;
+    const participations = await getParticipations.map((item) => item.participation).reduce(reducer);
+    if (participations >= 100) {
+      return { isError: true , status: 400, message: 'maximum participation reached, cannot create a new participant' };
+    }
+    if (participations + participation > 100) {
+      return { isError: true , status: 400, message: 'participation must be a minor value' };
+    }
+  }
   return await userModel.create(firstName, lastName, participation);
 };
 
