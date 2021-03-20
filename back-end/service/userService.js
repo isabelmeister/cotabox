@@ -2,10 +2,14 @@ const userModel = require('../model/userModel');
 /* const createValidation = require('../validations/createValidation'); */
 
 const createUser = async (firstName, lastName, participation) => {
-  // user validation:
-  const fullName = await userModel.getByFullName(firstName, lastName);
-  if (fullName) {
-    return { isError: true , status: 400, message: 'user already exists' };
+  //verify maximus participation value
+  const getParticipations = await userModel.getAll();
+  const reducer = (acc, curr) => acc + curr;
+  const participations = await getParticipations
+    .map((item) => item.participation).reduce(reducer);
+
+  if (participations + participation > 100) {
+    return { isError: true , status: 400, message: 'participation must be a minor value' };
   }
   // first name validation
   if (!firstName) {
@@ -26,6 +30,11 @@ const createUser = async (firstName, lastName, participation) => {
   }
   if (lastName.length < 5) {
     return { isError: true , status: 400, message: 'lastName must have at least 5 characters' };
+  }
+  // user validation:
+  const fullName = await userModel.getByFullName(firstName, lastName);
+  if (fullName) {
+    return { isError: true , status: 400, message: 'user already exists' };
   }
   // participation validation
   if (!participation) {
