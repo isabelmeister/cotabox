@@ -1,11 +1,11 @@
-/* import axios from 'axios'
+const axios = require('axios');
 
 const URL_BASE = 'http://localhost:3001/users'
 
-const create = ({ firstName, lastName, participation }) => 
-  axios
-    .post(`${URL_BASE}`, { firstName, lastName, participation })
-    .then((response) => response.data);
+const create = async ({ firstName, lastName, participation }) => axios
+  .post(`${URL_BASE}`, { firstName, lastName, participation })
+  .then((response) => response.data);
 
-export default { create };
- */
+const getAll = async () => axios
+  .get(`${URL_BASE}`)
+  .then((response) => response.data);
