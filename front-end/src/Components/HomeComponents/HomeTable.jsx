@@ -7,22 +7,24 @@ function HomeTable() {
   const userNumber = (prev) => prev + 1;
 
   return (
-    <div>
-      <tr>
+    <table>
+      <thead>
         <th></th>
         <th>First name</th>
         <th>Last name</th>
         <th>Participation</th>
-      </tr>
-      {users.map((item, index) => (
-        <tr key={index}>
-          <td>{userNumber(index)}</td>
-          <td>{item.firstName}</td>
-          <td>{item.lastName}</td>
-          <td>{item.participation}</td>
-        </tr>
-      ))}
-    </div>
+      </thead>
+      <tbody>
+        {users.map((item, index) => (
+          <tr key={index}>
+            <td>{userNumber(index)}</td>
+            <td>{item.firstName}</td>
+            <td>{item.lastName}</td>
+            <td>{item.participation}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   )
 }
 

@@ -5,7 +5,7 @@ import HeaderContext from '../Context/HeaderContext';
 import API from '../Services/API';
 
 function Header() {
-  const [user, setUser] = useState({firstName: '', lastName: '', participation: 0});
+  const [user, setUser] = useState({});
 
   const handleChange = ({ target }) => {
     setUser({...user, [target.name]: target.value });
@@ -15,6 +15,8 @@ function Header() {
     e.preventDefault();
     const { firstName, lastName, participation } = user;
     const register = await API.create(firstName, lastName, participation);
+    console.log(register.data)
+    return register;
     // create a paste and a new file called API for requirements
     // make here the connection with the create API from back-end
     // on clicking the button you have to create a new user on DB.
