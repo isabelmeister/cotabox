@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import HeaderContext from '../../Context/HeaderContext';
 
 function FormInput() {
-  const {
-    user,
-    handleChange
-  } = useContext(HeaderContext);
+  const { user, setUser } = useContext(HeaderContext);
+
+  const handleChange = ({ target }) => {
+    setUser({...user, [target.name]: target.value });
+  };
 
   return (
     <div>
@@ -19,7 +20,7 @@ function FormInput() {
       <input
         type="text"
         placeholder="Last name"
-        name="LastName"
+        name="lastName"
         value={ user.lastName }
         onChange={ handleChange }
       />
