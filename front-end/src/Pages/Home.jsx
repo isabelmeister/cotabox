@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import HomeContext from '../Context/HomeContext';
 import HomeGraphic from '../Components/HomeComponents/HomeGraphic';
 import HomeTable from '../Components/HomeComponents/HomeTable';
+import fetchAPI from '../Services/fetchAPI';
 
 function Home() {
-  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const dataUsers = await fetchAPI.getAll();
+  }, []);
 
   return (
     <HomeContext.Provider value={{ users }}>

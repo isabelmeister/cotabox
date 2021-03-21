@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import FormButton from '../Components/HeaderComponents/FormButton';
 import FormInput from '../Components/HeaderComponents/FormInput';
 import HeaderContext from '../Context/HeaderContext';
-import API from '../Services/API';
+import fetchAPI from '../Services/fetchAPI';
 
 function Header() {
   const [user, setUser] = useState({});
@@ -14,7 +14,7 @@ function Header() {
   const handleClick = async (e) => {
     e.preventDefault();
     const { firstName, lastName, participation } = user;
-    const register = await API.create(firstName, lastName, participation);
+    const register = await fetchAPI.create(firstName, lastName, participation);
     console.log(register.data)
     return register;
     // create a paste and a new file called API for requirements
