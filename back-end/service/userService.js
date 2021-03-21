@@ -27,26 +27,32 @@ const createUser = async (firstName, lastName, participation) => {
     return { isError: true , status: 400, message: 'user already exists' };
   }
   // participation validation
+  if (participation === 0 || participation === '0') {
+    return { isError: true , status: 400, message: 'participation must be greater than 0' };
+  };
   if (!participation) {
     return { isError: true , status: 400, message: 'participation is required' };
-  }
-  if (typeof participation !== 'number') {
-    return { isError: true , status: 400, message: 'participation must be a number' };
   }
   if (participation > 100) {
     return { isError: true , status: 400, message: 'participation must be less than 100' };
   }
+  /* if (typeof participation !== 'number') {
+    return { isError: true , status: 400, message: 'participation must be a number' };
+  } */
   //verify maximus participation value
+
+  //VERIFICAR ESSA PARTE AQUI ABAIXO
   const getParticipations = await userModel.getAll();
   if (getParticipations.length > 0) {
     const reducer = (acc, curr) => acc + curr;
     const participations = await getParticipations.map((item) => item.participation).reduce(reducer);
-    if (participations >= 100) {
+    console.log(participations);
+    /* if (participations > 100) {
       return { isError: true , status: 400, message: 'maximum participation reached, cannot create a new participant' };
-    }
-    if (participations + participation > 100) {
+    } */
+    /* if (participation + participations > 100) {
       return { isError: true , status: 400, message: 'participation must be a minor value' };
-    }
+    } */
   }
 
   return await userModel.create(firstName, lastName, participation);
