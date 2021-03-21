@@ -1,9 +1,8 @@
 const userModel = require('../model/userModel');
-/* const createValidation = require('../validations/createValidation'); */
 
 const createUser = async (firstName, lastName, participation) => {
-  // first name validation
-  if (!firstName) {
+   // first name validation
+   if (!firstName) {
     return { isError: true , status: 400, message: 'firstName is required' };  
   }
   if (typeof firstName !== 'string') {
@@ -49,6 +48,7 @@ const createUser = async (firstName, lastName, participation) => {
       return { isError: true , status: 400, message: 'participation must be a minor value' };
     }
   }
+
   return await userModel.create(firstName, lastName, participation);
 };
 

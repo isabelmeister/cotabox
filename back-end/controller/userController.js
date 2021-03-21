@@ -1,6 +1,5 @@
 const { Router } = require('express');
 const userService = require('../service/userService');
-
 const userRouter = Router();
 
 userRouter.post('/', async (req,res) => {
