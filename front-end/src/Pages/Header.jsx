@@ -12,8 +12,10 @@ function Header() {
       setUser,
     } }
     >
-      <FormInput />
-      <FormButton />
+      <header>
+        <FormInput />
+        <FormButton />
+      </header>
     </HeaderContext.Provider>
   );
 };
