@@ -12,7 +12,7 @@ userRouter.post('/', async (req,res) => {
     } 
       res.status(201).json({ message: 'created new user'});
   } catch (error) {
-    res.status(400).json({ message: 'Server error'});
+    res.status(500).json({ message: 'Server error'});
   }
 });
 
@@ -21,7 +21,7 @@ userRouter.get('/', async (req, res) => {
     const getAll = await userService.getAllUsers();
     res.status(200).json(getAll);
   } catch (error) {
-    res.status(400).json({ message: 'Server error'}); 
+    res.status(500).json({ message: 'Server error'}); 
   }
 });
 
