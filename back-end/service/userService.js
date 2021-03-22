@@ -18,10 +18,10 @@ const createUser = async (firstName, lastName, participation) => {
     const reducer = (acc, curr) => acc + curr.participation;
     const participations = getParticipations.reduce(reducer, 0);
     if (participations === 100) {
-      return { isError: true , status: 400, message: 'maximum participation reached, cannot create a new participant' };
+      return { isError: true , status: 400, message: 'Maximum participation reached, cannot create a new participant' };
     }
     if (participation + participations > 100) {
-      return { isError: true , status: 400, message: 'participation must be a minor value' };
+      return { isError: true , status: 400, message: 'Participation must be a minor value' };
     }
   }
 
