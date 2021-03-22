@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react';
-import HomeContext from '../../Context/HomeContext';
+import GeneralContext from '../../Context/GeneralContext';
 import fetchAPI from '../../Services/fetchAPI';
 
 function HomeTable() {
-  const { users, setUsers } = useContext(HomeContext)
+  const { users, setUsers } = useContext(GeneralContext);
 
-  const userNumber = (prev) => prev + 1;
+  const userNumber = prev => prev + 1;
 
   useEffect(() => {
     const getallUsers = async () => {
@@ -13,16 +13,18 @@ function HomeTable() {
       return setUsers(dataUsers);
     };
     return getallUsers();
-  }, [setUsers]);
+  }, []);
 
-  const mapUsers = users.map((item, index) => (
-    <tr key={index}>
-      <td>{userNumber(index)}</td>
-      <td>{item.firstName}</td>
-      <td>{item.lastName}</td>
-      <td>{item.participation}</td>
-    </tr>
-  ));
+  const mapUsers = users
+    .sort((a, b) => a.participation - b.participation)
+    .map((item, index) => (
+      <tr key={index}>
+        <td>{userNumber(index)}</td>
+        <td>{item.firstName}</td>
+        <td>{item.lastName}</td>
+        <td>{item.participation}</td>
+      </tr>
+    ));
 
   /* const filterPart = users.sort((item) => item.participation);
   console.log(filterPart); */
@@ -35,11 +37,9 @@ function HomeTable() {
         <th>Last name</th>
         <th>Participation</th>
       </thead>
-      <tbody>
-        {mapUsers}
-      </tbody>
+      <tbody>{mapUsers}</tbody>
     </table>
-  )
+  );
 }
 
 export default HomeTable;

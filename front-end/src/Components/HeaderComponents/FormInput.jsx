@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import HeaderContext from '../../Context/HeaderContext';
+import GeneralContext from '../../Context/GeneralContext';
 
 function FormInput() {
-  const { user, setUser } = useContext(HeaderContext);
+  const { user, setUser } = useContext(GeneralContext);
 
   const handleChange = ({ target }) => {
-    setUser({...user, [target.name]: target.value });
+    setUser({ ...user, [target.name]: target.value });
   };
 
   return (
@@ -14,25 +14,25 @@ function FormInput() {
         type="text"
         placeholder="First name"
         name="firstName"
-        value={ user.firstName }
-        onChange={ handleChange }
+        value={user.firstName}
+        onChange={handleChange}
       />
       <input
         type="text"
         placeholder="Last name"
         name="lastName"
-        value={ user.lastName }
-        onChange={ handleChange }
+        value={user.lastName}
+        onChange={handleChange}
       />
       <input
         type="number"
         placeholder="Participation"
         name="participation"
-        value={ user.participation }
-        onChange={ handleChange }
+        value={user.participation}
+        onChange={handleChange}
       />
     </div>
   );
-};
+}
 
 export default FormInput;
