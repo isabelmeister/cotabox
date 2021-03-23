@@ -5,8 +5,6 @@ import fetchAPI from '../../Services/fetchAPI';
 function HomeTable() {
   const { users, setUsers } = useContext(GeneralContext);
 
-  const userNumber = prev => prev + 1;
-
   useEffect(() => {
     const getallUsers = async () => {
       const dataUsers = await fetchAPI.getAll();
@@ -14,6 +12,8 @@ function HomeTable() {
     };
     return getallUsers();
   }, []);
+  
+  const userNumber = prev => prev + 1;
 
   const mapUsers = users
     .sort((a, b) => a.participation - b.participation)
