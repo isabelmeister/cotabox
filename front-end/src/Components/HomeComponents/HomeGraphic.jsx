@@ -53,7 +53,16 @@ function HomeGraphic() {
         fontColor: '#000',
       }
     },
-    maintainAspectRatio: false 
+    layout: {
+      padding: {
+        left: 950,
+        right: 300,
+        top: 0,
+        bottom: 0,
+      }
+    },
+    maintainAspectRatio: false,
+    /* cutoutPercentage: 50, */
   };
 
   return <Doughnut data={data} width={50} height={50} options={option}/>
