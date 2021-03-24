@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import GeneralContext from '../../Context/GeneralContext';
 import fetchAPI from '../../Services/fetchAPI';
+import '../../../node_modules/bulma/css/bulma.css';
 
 function HomeTable() {
   const { users, setUsers } = useContext(GeneralContext);
@@ -12,7 +13,7 @@ function HomeTable() {
     };
     return getallUsers();
   }, []);
-  
+
   const userNumber = prev => prev + 1;
 
   const mapUsers = users
@@ -22,15 +23,19 @@ function HomeTable() {
         <td>{userNumber(index)}</td>
         <td>{item.firstName}</td>
         <td>{item.lastName}</td>
-        <td>{item.participation}</td>
+        <td>{item.participation}%</td>
       </tr>
     ));
 
-  /* const filterPart = users.sort((item) => item.participation);
-  console.log(filterPart); */
+  const tableStyle = {
+    marginLeft: '400px',
+    marginTop: '70px',
+    width: '56%',
+    borderColor: '#696969',
+  };
 
   return (
-    <table>
+    <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth" style={tableStyle}>
       <thead>
         <th></th>
         <th>First name</th>

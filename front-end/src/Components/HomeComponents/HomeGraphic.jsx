@@ -10,9 +10,9 @@ function HomeGraphic() {
     const getData = async () => {
       const allData = await fetchAPI.getAll();
       const getParticipation = allData.map(user => user.participation);
-      setPart(...part, getParticipation);
+      setPart(getParticipation);
       const getUserName = allData.map(user => user.firstName + ' ' + user.lastName);
-      setUserName(...userName, getUserName);
+      setUserName(getUserName);
     };
     getData();
   }, []);
@@ -55,17 +55,21 @@ function HomeGraphic() {
     },
     layout: {
       padding: {
-        left: 1100,
-        right: 300,
+        left: 300,
+        right: 200,
         top: 0,
-        bottom: 100,
+        bottom: 0,
       }
     },
     maintainAspectRatio: false,
     /* cutoutPercentage: 50, */
   };
 
-  return <Doughnut data={data} width={100} height={100} options={option}/>
+  return (
+    <div style={{marginTop: '100px', marginRight: '160px', marginLeft: '-200px' }}>
+      <Doughnut data={data} width={300} height={100} options={option}/>
+    </div>
+  );
 };
 
 export default HomeGraphic;

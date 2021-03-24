@@ -3,7 +3,7 @@ import GeneralContext from '../../Context/GeneralContext';
 import fetchAPI from '../../Services/fetchAPI';
 
 function FormButton() {
-  const { user, setUser, setUsers, part, setPart, userName, setUserName } = useContext(GeneralContext);
+  const { user, setUser, setUsers, setPart, setUserName } = useContext(GeneralContext);
 
   const handleClick = async e => {
     e.preventDefault();
@@ -16,20 +16,38 @@ function FormButton() {
       const dataUsers = await fetchAPI.getAll();
       setUsers(dataUsers);
       const getParticipation = dataUsers.map(user => user.participation);
-      setPart(...part, getParticipation);
+      setPart(getParticipation);
       const getUserName = dataUsers.map(user => user.firstName + ' ' + user.lastName);
-      setUserName(...userName, getUserName);
+      setUserName(getUserName);
     }
     if (register.error) {
-      return alert(register.error)
+      return alert(register.error);
     }
-    setUser({firstName: '', lastName: '', participation: ''})
+    setUser({ firstName: '', lastName: '', participation: '' });
     return register;
+  };
+
+  const style = {
+    paddingLeft: '30px',
+    paddingRight: '50px',
+    paddingTop: '15px',
+    paddingBottom: '15px',
+    marginTop: '55px',
+    border: '3px, solid, white',
+    backgroundColor: '#29b6f6',
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: '20px'
   };
 
   return (
     <div>
-      <button type="submit" onClick={handleClick}>
+      <button
+        class="button is-normal"
+        style={style}
+        type="submit"
+        onClick={handleClick}
+      >
         SEND
       </button>
     </div>
