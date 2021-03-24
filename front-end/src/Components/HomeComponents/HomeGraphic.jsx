@@ -55,8 +55,8 @@ function HomeGraphic() {
     },
     layout: {
       padding: {
-        left: 300,
-        right: 200,
+        left: 250,
+        right: 250,
         top: 0,
         bottom: 0,
       }
@@ -66,8 +66,8 @@ function HomeGraphic() {
   };
 
   return (
-    <div style={{marginTop: '100px', marginRight: '160px', marginLeft: '-200px' }}>
-      <Doughnut data={data} width={300} height={100} options={option}/>
+    <div style={{marginTop: '80px', marginRight: '160px', marginLeft: '-200px' }}>
+      <Doughnut data={data} width={200} height={200} options={option}/>
     </div>
   );
 };
