@@ -55,17 +55,17 @@ function HomeGraphic() {
     },
     layout: {
       padding: {
-        left: 950,
+        left: 1100,
         right: 300,
         top: 0,
-        bottom: 0,
+        bottom: 100,
       }
     },
     maintainAspectRatio: false,
     /* cutoutPercentage: 50, */
   };
 
-  return <Doughnut data={data} width={50} height={50} options={option}/>
+  return <Doughnut data={data} width={100} height={100} options={option}/>
 };
 
 export default HomeGraphic;
