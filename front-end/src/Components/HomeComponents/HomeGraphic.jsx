@@ -4,7 +4,7 @@ import fetchAPI from '../../Services/fetchAPI';
 import { Doughnut } from 'react-chartjs-2';
 
 function HomeGraphic() {
-  const { part, setPart, userName, setUserName } = useContext(GeneralContext);
+  const { part, setPart, userName, setUserName, color, setColor } = useContext(GeneralContext);
 
   useEffect(() => {
     const getData = async () => {
@@ -13,6 +13,9 @@ function HomeGraphic() {
       setPart(getParticipation);
       const getUserName = allData.map(user => user.firstName + ' ' + user.lastName);
       setUserName(getUserName);
+      const getColor = allData.map((user) => user.color);
+      setColor(getColor);
+      console.log(getColor);
     };
     getData();
   }, []);
@@ -22,22 +25,8 @@ function HomeGraphic() {
     datasets: [{
       label: userName,
       data: part,
-      backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 206, 86)',
-        'rgb(75, 192, 192)',
-        'rgb(153, 102, 255)',
-        'rgb(255, 159, 64)'
-      ],
-      borderColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 206, 86)',
-        'rgb(75, 192, 192)',
-        'rgb(153, 102, 255)',
-        'rgb(255, 159, 64)'
-      ],
+      backgroundColor: color,
+      borderColor: color,
       borderWidth: 1,
     }]
   };

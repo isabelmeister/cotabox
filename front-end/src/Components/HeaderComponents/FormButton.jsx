@@ -1,9 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import GeneralContext from '../../Context/GeneralContext';
 import fetchAPI from '../../Services/fetchAPI';
 
 function FormButton() {
-  const { user, setUser, setUsers, setPart, setUserName } = useContext(GeneralContext);
+  const { user, setUser, setUsers, setPart, setUserName, userColor, setUserColor, color, setColor } = useContext(GeneralContext);
+
+  const randomColor = () => {
+    const r = Math.round(Math.random() * 255, 1);
+    const g = Math.round(Math.random() * 255, 1);
+    const b = Math.round(Math.random() * 255, 1);
+    setUserColor(`rgb(${r}, ${g}, ${b})`)
+  };
+
+  useEffect(()=> {
+    randomColor();
+  }, []);
 
   const handleClick = async e => {
     e.preventDefault();
@@ -11,7 +22,8 @@ function FormButton() {
     if (!firstName && !lastName && !participation) {
       return alert('Fill all the inputs');
     }
-    const register = await fetchAPI.create(firstName, lastName, Number(participation));
+    randomColor();
+    const register = await fetchAPI.create(firstName, lastName, Number(participation), userColor);
     if (register.message === 'created new user') {
       const dataUsers = await fetchAPI.getAll();
       setUsers(dataUsers);
@@ -19,12 +31,17 @@ function FormButton() {
       setPart(getParticipation);
       const getUserName = dataUsers.map(user => user.firstName + ' ' + user.lastName);
       setUserName(getUserName);
+      const getColor = dataUsers.map((user) => user.color);
+      setColor(getColor)
+      console.log(color)
+      console.log(getColor);
     }
     if (register.error) {
       return alert(register.error);
     }
     setUser({ firstName: '', lastName: '', participation: '' });
     return register;
+
   };
 
   const style = {
