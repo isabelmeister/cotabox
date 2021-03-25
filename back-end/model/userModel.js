@@ -1,7 +1,7 @@
 const connection = require('./connection');
 
-const create = async (firstName, lastName, participation) => {
-  const creation = await connection().then((db) => db.collection('users').insertOne({ firstName, lastName, participation }));
+const create = async (firstName, lastName, participation, color) => {
+  const creation = await connection().then((db) => db.collection('users').insertOne({ firstName, lastName, participation, color }));
   return creation.ops[0];
 };
 

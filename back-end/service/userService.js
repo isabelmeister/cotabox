@@ -1,7 +1,7 @@
 const userModel = require('../model/userModel');
 const { checkName, checkParticipation } = require('../middlewares/validations');
 
-const createUser = async (firstName, lastName, participation) => {
+const createUser = async (firstName, lastName, participation, color) => {
 
   const testName = await checkName(firstName, lastName);
   if (testName.isError) {
@@ -25,7 +25,7 @@ const createUser = async (firstName, lastName, participation) => {
     }
   }
 
-  return await userModel.create(firstName, lastName, participation);
+  return await userModel.create(firstName, lastName, participation, color);
 };
 
 const getAllUsers = async () => {
@@ -35,13 +35,6 @@ const getAllUsers = async () => {
   }
   return allUsers;
 };
-
-/* const getAllParticipations = async () => {
-  const allParticipations = await userModel.getAllParticipations();
-  console.log(allParticipations);
-  console.log(allParticipations.cmd.query);
-  return allParticipations;
-}; */
 
 module.exports = {
   createUser,

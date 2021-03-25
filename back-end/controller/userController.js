@@ -4,9 +4,9 @@ const userRouter = Router();
 
 userRouter.post('/', async (req,res) => {
   try {
-    const { firstName, lastName, participation } = req.body;
+    const { firstName, lastName, participation, color } = req.body;
     
-    const created = await userService.createUser(firstName, lastName, participation);
+    const created = await userService.createUser(firstName, lastName, participation, color);
     if (created.isError) {
       return res.status(created.status).json({ error: created.message });
     } 
