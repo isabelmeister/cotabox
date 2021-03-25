@@ -50,5 +50,6 @@ On each you should be at the respective folder**
 - Deploy back and front-end on Heroku
 - Random colors customized for each user and saved in the database
 - Create tests for the back and front-end
+- **Probably will be done at 28/03/2021**
 
 ### For more **informations** or **feedbacks** please **contact me by email: _beelsdelonge@gmail.com_**
