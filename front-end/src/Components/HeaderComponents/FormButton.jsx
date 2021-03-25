@@ -3,7 +3,7 @@ import GeneralContext from '../../Context/GeneralContext';
 import fetchAPI from '../../Services/fetchAPI';
 
 function FormButton() {
-  const { user, setUser, setUsers, setPart, setUserName, userColor, setUserColor, color, setColor } = useContext(GeneralContext);
+  const { user, setUser, setUsers, setPart, setUserName, userColor, setUserColor, setColor } = useContext(GeneralContext);
 
   const randomColor = () => {
     const r = Math.round(Math.random() * 255, 1);
@@ -41,7 +41,6 @@ function FormButton() {
     }
     setUser({ firstName: '', lastName: '', participation: '' });
     return register;
-
   };
 
   const style = {

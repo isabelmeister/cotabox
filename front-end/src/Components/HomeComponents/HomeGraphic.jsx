@@ -8,18 +8,23 @@ function HomeGraphic() {
 
   useEffect(() => {
     const getData = async () => {
+      // Render all data from database to populate graphic
       const allData = await fetchAPI.getAll();
+      // Find all the participation to populate the graphic
       const getParticipation = allData.map(user => user.participation);
       setPart(getParticipation);
+      // Find and combine the user full name to populate the graphic
       const getUserName = allData.map(user => user.firstName + ' ' + user.lastName);
       setUserName(getUserName);
+      // Find all the users colors to populate the graphic
       const getColor = allData.map((user) => user.color);
       setColor(getColor);
-      console.log(getColor);
     };
     getData();
   }, []);
 
+
+  // Graphic data construction
   const data = {
     labels: userName,
     datasets: [{
@@ -30,6 +35,7 @@ function HomeGraphic() {
       borderWidth: 1,
     }]
   };
+  // Graphic options construction
   const option = {
     legend: {
       position: 'right',
