@@ -34,7 +34,6 @@
 **1 step:**
 > **In the Terminal, open two tabs, one for the front-end command and one for the back-end commands.
 On each you should be at the respective folder**
-  > **
   
 **2 step:**
 > **In the back-end tab, write the follow command:**
