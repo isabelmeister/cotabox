@@ -50,6 +50,6 @@ On each you should be at the respective folder**
 ## Future improvements:
 - Deploy back and front-end on Heroku
 - Random colors customized for each user and saved in the database
-- More tests in back and front-end
+- Create tests for the back and front-end
 
 ### For more **informations** or **feedbacks** please **contact me by email: _beelsdelonge@gmail.com_**
