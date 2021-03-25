@@ -7,15 +7,19 @@
  * git clone https://github.com/isabelmeister/cotabox.git
   
 **2 step:**
-> **Enter in the front-end folder and do the follow commands:**
+> **Enter in the front-end folder**:
+  * cd front-end
+  > **And do the follow commands:**
   * npm install
     
 **3 step:**
-> **Go up at the original folder and switch to back-end's folder, then do the follow commands:**
+> **Enter in the front-end folder**:
+  * cd back-end
+  > **And do the follow commands:**
   * npm install
   
 **4 step:**
-> If you already have a database on MongoDB called "Data" you can switch the name on the follow way:
+> **If you already have a database on MongoDB called "Data" you can switch the name on the follow way:**
   * back-end/model/connection.js -> Change the name who is inside the quotation marks at the line 6.
   * Do not change any other line or code
   
