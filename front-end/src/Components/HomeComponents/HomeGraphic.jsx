@@ -62,6 +62,7 @@ function HomeGraphic() {
       }
     },
     maintainAspectRatio: false,
+    responsive: true
     /* cutoutPercentage: 50, */
   };
 
