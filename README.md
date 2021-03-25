@@ -32,7 +32,7 @@
 ## How to start
 
 **1 step:**
-> **In the Terminal, open two tabs, one for the front-end command and one for the back-end commands.
+> **In the Terminal, open two tabs, one for the front-end command and one for the back-end command.
 On each you should be at the respective folder**
   
 **2 step:**
