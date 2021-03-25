@@ -23,8 +23,10 @@ function FormButton() {
       return alert('Fill all the inputs');
     }
     randomColor();
+    // Creating the new user in the database
     const register = await fetchAPI.create(firstName, lastName, Number(participation), userColor);
     if (register.message === 'created new user') {
+      // If successfully created will get the data for render the table and the graphic
       const dataUsers = await fetchAPI.getAll();
       setUsers(dataUsers);
       const getParticipation = dataUsers.map(user => user.participation);
@@ -33,8 +35,6 @@ function FormButton() {
       setUserName(getUserName);
       const getColor = dataUsers.map((user) => user.color);
       setColor(getColor)
-      console.log(color)
-      console.log(getColor);
     }
     if (register.error) {
       return alert(register.error);
