@@ -9,16 +9,10 @@
 **2 step:**
 > **Enter in the front-end folder and do the follow commands:**
   * npm install
-  * npm install --save react-chartjs-2 chart.js
-  * npm install bulma
     
 **3 step:**
 > **Go up at the original folder and switch to back-end's folder, then do the follow commands:**
   * npm install
-  * npm i express
-  * npm i mongodb
-  * npm i nodemon -D 
-  * npm install cors
   
 **4 step:**
 > If you already have a database on MongoDB called "Data" you can switch the name on the follow way:
