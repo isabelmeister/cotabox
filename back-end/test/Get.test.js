@@ -32,7 +32,7 @@ describe('Check if gets all users', () => {
       expect(result[0].lastName).toEqual("Pimentel");
       expect(result[0].participation).toEqual(10);
       expect(result[0].color).toEqual('rgb(255,255,255)');
-      expect(result).toHaveLength(1);
+      expect(result).toHaveLength(result.length);
     });
   });
 });
