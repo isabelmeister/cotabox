@@ -63,6 +63,7 @@ function FormButton() {
         style={style}
         type="submit"
         onClick={handleClick}
+        data-testid="btn-send"
       >
         SEND
       </button>

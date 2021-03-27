@@ -19,6 +19,7 @@ function FormInput() {
         name="firstName"
         value={user.firstName}
         onChange={handleChange}
+        data-testid="input-first"
       />
       </div>
       <div class="column">
@@ -29,6 +30,7 @@ function FormInput() {
         name="lastName"
         value={user.lastName}
         onChange={handleChange}
+        data-testid="input-last"
       />
       </div>
       <div class="column">
@@ -39,6 +41,7 @@ function FormInput() {
         name="participation"
         value={user.participation}
         onChange={handleChange}
+        data-testid="input-participation"
       />
       </div>
     </div>

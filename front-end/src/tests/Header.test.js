@@ -23,20 +23,21 @@ describe('Check the Header components', () => {
     expect(firstNameInput.tagName).toBe('INPUT');
     expect(lastNameInput.tagName).toBe('INPUT');
     expect(participationInput.tagName).toBe('INPUT');
-    expect(firstNameInput).toBeInTheDocument();
-    expect(lastNameInput).toBeInTheDocument();
-    expect(participationInput).toBeInTheDocument();
   });
 
   test('Check if exists three inputs', () => {
-    const {} = render(
+    const { getByTestId } = render(
       <GeneralProvider>
         <Header />
       </GeneralProvider>
     );
-    const quantityInputs = document.getElementsByTagName('input');
+    const firstInput = getByTestId('input-first');
+    const secondInput = getByTestId('input-last');
+    const thirdInput = getByTestId('input-participation');
     
-    expect(quantityInputs.length).toStrictEqual(3);
+    expect(firstInput).toBeInTheDocument();
+    expect(secondInput).toBeInTheDocument();
+    expect(thirdInput).toBeInTheDocument();
   });
 
   test('Check if the button exists', () => {
