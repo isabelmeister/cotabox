@@ -20,9 +20,6 @@ describe('Check the Header components', () => {
     expect(firstNameInput.placeholder).toBe('First name');
     expect(lastNameInput.placeholder).toBe('Last name');
     expect(participationInput.placeholder).toBe('Participation');
-    expect(firstNameInput.tagName).toBe('INPUT');
-    expect(lastNameInput.tagName).toBe('INPUT');
-    expect(participationInput.tagName).toBe('INPUT');
   });
 
   test('Check if exists three inputs', () => {
@@ -34,6 +31,10 @@ describe('Check the Header components', () => {
     const firstInput = getByTestId('input-first');
     const secondInput = getByTestId('input-last');
     const thirdInput = getByTestId('input-participation');
+
+    expect(firstInput.tagName).toBe('INPUT');
+    expect(secondInput.tagName).toBe('INPUT');
+    expect(thirdInput.tagName).toBe('INPUT');
     
     expect(firstInput).toBeInTheDocument();
     expect(secondInput).toBeInTheDocument();
@@ -64,7 +65,7 @@ describe('Check the Header components', () => {
     expect(button[0].innerHTML).toEqual('SEND');
   });
 
-  test('Checking the inputs behavior', () => {
+  test('Check the inputs behavior', () => {
     const { queryByPlaceholderText } = render(
       <GeneralProvider>
         <App />
@@ -80,5 +81,4 @@ describe('Check the Header components', () => {
     expect(lastNameInput).toHaveValue('Pimentel');
     expect(participationInput).toHaveValue(10);
   });
-
 });
