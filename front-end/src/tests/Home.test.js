@@ -16,6 +16,10 @@ describe('Checking the Home components', () => {
     expect(headerTable[1].innerHTML).toBe('First name');
     expect(headerTable[2].innerHTML).toBe('Last name');
     expect(headerTable[3].innerHTML).toBe('Participation');
+    expect(headerTable[0]).toBeInTheDocument();
+    expect(headerTable[1]).toBeInTheDocument();
+    expect(headerTable[2]).toBeInTheDocument();
+    expect(headerTable[3]).toBeInTheDocument();
   });
 
   test('Checking the table headers attributes', () => {
@@ -26,6 +30,7 @@ describe('Checking the Home components', () => {
     );
     const headerTable = document.getElementsByTagName('th');
     expect(headerTable.length).toStrictEqual(4);
+    expect(headerTable).toHaveLength(4);
   });
 
 });
