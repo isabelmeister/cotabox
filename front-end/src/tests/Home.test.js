@@ -1,5 +1,4 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import Home from '../Pages/Home';
 import GeneralProvider from '../Context/GeneralProvider';
@@ -8,11 +7,9 @@ describe('Checking the Home components', () => {
 
   test('Checking the table headers', () => {
     const {} = render(
-      <MemoryRouter>
-        <GeneralProvider>
-          <Home />
-        </GeneralProvider>
-      </MemoryRouter>,
+      <GeneralProvider>
+        <Home />
+      </GeneralProvider>
     );
     const headerTable = document.getElementsByTagName('th');
     expect(headerTable[0].innerHTML).toBe('');
@@ -23,11 +20,9 @@ describe('Checking the Home components', () => {
 
   test('Checking the table headers attributes', () => {
     const {} = render(
-      <MemoryRouter>
-        <GeneralProvider>
-          <Home />
-        </GeneralProvider>
-      </MemoryRouter>,
+      <GeneralProvider>
+        <Home />
+      </GeneralProvider>
     );
     const headerTable = document.getElementsByTagName('th');
     expect(headerTable.length).toStrictEqual(4);

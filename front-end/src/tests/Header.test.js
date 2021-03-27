@@ -1,19 +1,17 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
-import { fireEvent, render, userEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import Header from '../Pages/Header';
 import App from '../App';
 import GeneralProvider from '../Context/GeneralProvider';
+import userEvent from '@testing-library/user-event';
 
 describe('Check the Header components', () => {
   
-  test('checking the inputs placeholder values', () => {
+  test('Check the inputs placeholder text', () => {
     const { queryByPlaceholderText } = render(
-      <MemoryRouter>
-        <GeneralProvider>
-          <Header />
-        </GeneralProvider>
-      </MemoryRouter>,
+      <GeneralProvider>
+        <Header />
+      </GeneralProvider>
     );
     const firstNameInput = queryByPlaceholderText('First name');
     const lastNameInput = queryByPlaceholderText('Last name');
@@ -30,13 +28,11 @@ describe('Check the Header components', () => {
     expect(participationInput).toBeInTheDocument();
   });
 
-  test('checking if exists three inputs', () => {
+  test('Check if exists three inputs', () => {
     const {} = render(
-      <MemoryRouter>
-        <GeneralProvider>
-          <Header />
-        </GeneralProvider>
-      </MemoryRouter>,
+      <GeneralProvider>
+        <Header />
+      </GeneralProvider>
     );
     const quantityInputs = document.getElementsByTagName('input');
     
@@ -44,51 +40,44 @@ describe('Check the Header components', () => {
   });
 
   test('Check if the button exists', () => {
-    const { queryAllByRole } = render(
-      <MemoryRouter>
-        <GeneralProvider>
-          <Header />
-        </GeneralProvider>
-      </MemoryRouter>,
+    const { getAllByRole } = render(
+      <GeneralProvider>
+        <Header />
+      </GeneralProvider>
     );
-    const quantityButtons = queryAllByRole('button');
+    const quantityButtons = getAllByRole('button');
     
     expect(quantityButtons.length).toStrictEqual(1);
+    expect(quantityButtons).toHaveLength(1);
     expect(quantityButtons[0]).toBeInTheDocument();
   });
 
-  test('Check the button text', () => {
-    const { queryAllByRole } = render(
-      <MemoryRouter>
-        <GeneralProvider>
-          <Header />
-        </GeneralProvider>
-      </MemoryRouter>,
+  test('Check if the button text is "SEND"', () => {
+    const { getAllByRole } = render(
+      <GeneralProvider>
+        <Header />
+      </GeneralProvider>
     );
-    const button = queryAllByRole('button');
+    const button = getAllByRole('button');
     
     expect(button[0].innerHTML).toEqual('SEND');
   });
 
-  test('Checking the button behavior', () => {
-    const { queryByPlaceholderText, queryAllByRole, getByText } = render(
-      <MemoryRouter>
-        <GeneralProvider>
-          <App />
-        </GeneralProvider>
-      </MemoryRouter>,
+  test('Checking the inputs behavior', () => {
+    const { queryByPlaceholderText } = render(
+      <GeneralProvider>
+        <App />
+      </GeneralProvider>
     );
     const firstNameInput = queryByPlaceholderText('First name');
     const lastNameInput = queryByPlaceholderText('Last name');
     const participationInput = queryByPlaceholderText('Participation');
-    const button = queryAllByRole('button');
-    fireEvent.change(firstNameInput, { target: { value: 'Joana' } });
-    fireEvent.change(lastNameInput, { target: { value: 'Pimentel' } });
-    fireEvent.change(participationInput, { target: { value: 10 } });
-    fireEvent.click(button[0]);
-
-    /* const firstName = getByText('Joana');
-    expect(firstName).toBeInTheDocument(); */
+    userEvent.type(firstNameInput, 'Joana');
+    userEvent.type(lastNameInput, 'Pimentel');
+    userEvent.type(participationInput, '10');
+    expect(firstNameInput).toHaveValue('Joana');
+    expect(lastNameInput).toHaveValue('Pimentel');
+    expect(participationInput).toHaveValue(10);
   });
 
 });
