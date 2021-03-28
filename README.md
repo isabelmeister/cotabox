@@ -43,12 +43,23 @@ On each you should be at the respective folder**
 **3 step**
 > **In the front-end tab, write the follow command:**
 * npm start
+
+## How do run the tests
+
+**1 step:**
+> **In the terminal back-end folder, make sure you are running the server with the follow command:**
+* npm run dev
+> **At the same time, but in another tab, do the follow command to initiate the tests:**
+* npm test
+
+**2 step:**
+> **In the terminal front-end folder, do the follow command to initiate the tests:**
+* npm test
   
 ## I believe that is all the steps you need to do to appreciate my code and interface.
 
 ## Future improvements:
 - Deploy back and front-end on Heroku
-- Create tests for the back and front-end
-- **Probably will be done at 28/03/2021**
+- Make some improvements about the front-end tests
 
 ### For more **informations** or **feedbacks** please **contact me by email: _beelsdelonge@gmail.com_**
