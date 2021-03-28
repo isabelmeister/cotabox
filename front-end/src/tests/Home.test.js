@@ -5,32 +5,42 @@ import GeneralProvider from '../Context/GeneralProvider';
 
 describe('Checking the Home components', () => {
 
-  test('Checking the table headers', () => {
-    const {} = render(
+  it('Checking the table headers', () => {
+    const { queryAllByRole } = render(
       <GeneralProvider>
         <Home />
       </GeneralProvider>
     );
-    const headerTable = document.getElementsByTagName('th');
-    expect(headerTable[0].innerHTML).toBe('');
-    expect(headerTable[1].innerHTML).toBe('First name');
-    expect(headerTable[2].innerHTML).toBe('Last name');
-    expect(headerTable[3].innerHTML).toBe('Participation');
-    expect(headerTable[0]).toBeInTheDocument();
-    expect(headerTable[1]).toBeInTheDocument();
-    expect(headerTable[2]).toBeInTheDocument();
-    expect(headerTable[3]).toBeInTheDocument();
+    const headerTable = queryAllByRole('table');
+    const headerTableChild = queryAllByRole('table')[0].firstChild;
+    const headerTableChildTag = headerTableChild.firstChild;
+    expect(headerTable[0].tagName).toBe('TABLE')
+    expect(headerTable[0]).toBeInTheDocument()
+    expect(headerTableChild.tagName).toBe('THEAD')
+    expect(headerTableChild).toBeInTheDocument()
+    expect(headerTableChildTag.tagName).toBe('TH');
+    expect(headerTableChildTag).toBeInTheDocument();
+    expect(headerTableChildTag.innerHTML).toBe('');
+    expect(headerTableChildTag.nextSibling.innerHTML).toBe('First name');
+    expect(headerTableChildTag.nextSibling).toBeInTheDocument();
+    expect(headerTableChildTag.nextSibling.nextSibling.innerHTML).toBe('Last name');
+    expect(headerTableChildTag.nextSibling.nextSibling).toBeInTheDocument();
+    expect(headerTableChildTag.nextSibling.nextSibling.nextSibling.innerHTML).toBe('Participation');
+    expect(headerTableChildTag.nextSibling.nextSibling.nextSibling).toBeInTheDocument();
   });
 
-  test('Checking the table headers attributes', () => {
-    const {} = render(
+  it('Check the Text in Home page', () => {
+    const { getByText } = render(
       <GeneralProvider>
         <Home />
       </GeneralProvider>
-    );
-    const headerTable = document.getElementsByTagName('th');
-    expect(headerTable.length).toStrictEqual(4);
-    expect(headerTable).toHaveLength(4);
-  });
+    )
+    const getTitle = getByText('DATA');
+    const getSubTitle = getByText('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+    expect(getTitle).toBeInTheDocument();
+    expect(getTitle.tagName).toBe('H1');
+    expect(getSubTitle).toBeInTheDocument();
+    expect(getSubTitle.tagName).toBe('H2');
+  })
 
 });

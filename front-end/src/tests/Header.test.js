@@ -1,13 +1,13 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Header from '../Pages/Header';
 import App from '../App';
 import GeneralProvider from '../Context/GeneralProvider';
-import userEvent from '@testing-library/user-event';
 
 describe('Check the Header components', () => {
   
-  test('Check the inputs placeholder text', () => {
+  it('Check the inputs placeholder text', () => {
     const { queryByPlaceholderText } = render(
       <GeneralProvider>
         <Header />
@@ -22,7 +22,7 @@ describe('Check the Header components', () => {
     expect(participationInput.placeholder).toBe('Participation');
   });
 
-  test('Check if exists three inputs', () => {
+  it('Check if exists three inputs', () => {
     const { getByTestId } = render(
       <GeneralProvider>
         <Header />
@@ -41,7 +41,7 @@ describe('Check the Header components', () => {
     expect(thirdInput).toBeInTheDocument();
   });
 
-  test('Check if the button exists', () => {
+  it('Check if the button exists', () => {
     const { getAllByRole } = render(
       <GeneralProvider>
         <Header />
@@ -54,18 +54,22 @@ describe('Check the Header components', () => {
     expect(quantityButtons[0]).toBeInTheDocument();
   });
 
-  test('Check if the button text is "SEND"', () => {
-    const { getAllByRole } = render(
+  it('Check if the button text is "SEND"', () => {
+    const { getAllByRole, getByText } = render(
       <GeneralProvider>
         <Header />
       </GeneralProvider>
     );
     const button = getAllByRole('button');
+    const nameButton = getByText('SEND');
     
     expect(button[0].innerHTML).toEqual('SEND');
+    expect(nameButton).toBeInTheDocument();
+    expect(nameButton.tagName).toBe('BUTTON');
+    
   });
 
-  test('Check the inputs behavior', () => {
+  it('Check the inputs behavior', () => {
     const { queryByPlaceholderText } = render(
       <GeneralProvider>
         <App />

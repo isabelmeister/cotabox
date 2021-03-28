@@ -20,7 +20,7 @@ function FormButton() {
     e.preventDefault();
     const { firstName, lastName, participation } = user;
     if (!firstName && !lastName && !participation) {
-      return alert('Fill all the inputs');
+      return ('Fill all the inputs');
     }
     randomColor();
     // Creating the new user in the database
