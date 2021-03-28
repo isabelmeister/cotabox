@@ -44,7 +44,7 @@ On each you should be at the respective folder**
 > **In the front-end tab, write the follow command:**
 * npm start
 
-## How do run the tests
+## How to run the tests
 
 **1 step:**
 > **In the terminal back-end folder, make sure you are running the server with the follow command:**
